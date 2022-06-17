@@ -1,0 +1,10 @@
+{
+  "name": "enquirer-basics",
+  "version": "0.0.1",
+  "description": "Testing the basics of the enquirer package",
+  "type": "module",
+  "author": "Ibby",
+  "dependencies": {
+    "enquirer": "^2.3.6"
+  }
+}
