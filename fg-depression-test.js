@@ -1,6 +1,21 @@
 import Enquirer from "enquirer" 
 const { Survey } = Enquirer
 
+async function keypress() {
+    console.log("Press any key to exit...")
+    process.stdin.resume()
+    process.stdin.setRawMode(true)
+    return new Promise((resolve,reject)=> {
+        const handler = buffer => {
+            process.stdin.setRawMode(false)
+            process.stdin.pause()
+            process.nextTick(resolve)
+        }
+        process.stdin.once('data', handler)
+    })
+}
+
+
 const prompt = new Survey({
     name: 'Feeling Great depression test',
     message: "Select answers to indicate how you're feeling right now.",
@@ -23,3 +38,4 @@ const prompt = new Survey({
 let val = await prompt.run()
 
 console.log(val)
+await keypress()
